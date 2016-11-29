@@ -1,0 +1,16 @@
+[
+{
+  "modid": "ctkorwatercan",
+  "name": "CTKor Watercan",
+  "description": "Simple watercan mod.",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://github.com/codetaylor/kor-watercan",
+  "updateUrl": "",
+  "authorList": ["codetaylor"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": ["ctkorlib"]
+}
+]
