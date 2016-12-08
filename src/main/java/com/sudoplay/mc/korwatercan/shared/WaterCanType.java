@@ -2,6 +2,8 @@ package com.sudoplay.mc.korwatercan.shared;
 
 import com.sudoplay.mc.kor.spi.item.ISubType;
 
+import javax.annotation.Nonnull;
+
 /**
  * Created by codetaylor on 11/22/2016.
  */
@@ -21,6 +23,7 @@ public enum WaterCanType implements
     this.name = name;
   }
 
+  @Nonnull
   @Override
   public String getName() {
     return this.name;

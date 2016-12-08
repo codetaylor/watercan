@@ -32,7 +32,7 @@ public class ModuleWaterCanConfigAdapter implements
 
     configuration.addCustomCategoryComment(
         category,
-        "Turn off all the particle spawned by the water can here."
+        "Turn off all the particles spawned by the water can here."
     );
 
     KorConfigUtil.adaptBoolean(category, "spawnWaterParticles", true, configuration, textConfigData);
