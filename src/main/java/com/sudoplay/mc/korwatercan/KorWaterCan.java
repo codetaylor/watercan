@@ -14,12 +14,13 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
     modid = KorWaterCan.MOD_ID,
     version = KorWaterCan.VERSION,
     name = KorWaterCan.NAME
+    //@@DEPENDENCIES@@
 )
 public class KorWaterCan extends
     Kor {
 
   public static final String MOD_ID = "ctkorwatercan";
-  public static final String VERSION = "snapshot";
+  public static final String VERSION = "@@VERSION@@";
   public static final String NAME = "CTKor WaterCan";
   public static final double JSON_CONFIGS_VERSION = 1.0;
 

@@ -29,7 +29,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import javax.annotation.Nonnull;
 
 /**
- * Created by sk3lls on 11/27/2016.
+ * Created by codetaylor on 11/27/2016.
  */
 /* package */ abstract class AbstractItemWaterCan extends
     KorBasicItem {

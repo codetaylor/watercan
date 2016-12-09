@@ -14,7 +14,7 @@ import com.sudoplay.mc.korwatercan.module.watercan.ModuleWaterCan.Config;
 import com.sudoplay.mc.korwatercan.shared.WaterCanType;
 
 /**
- * Created by sk3lls on 11/24/2016.
+ * Created by codetaylor on 11/24/2016.
  */
 @KorRegistrationTextConfigDependency(dependsOn = {
     @KorTextConfigDependency(filename = Config.FILENAME, category = Config.CATEGORY_ITEM_WATERCAN, key = "diamond")

@@ -60,8 +60,8 @@ public class ModuleWaterCanConfigAdapter implements
 
     KorConfigUtil.adaptInteger(category, "wood", 0, configuration, textConfigData);
     KorConfigUtil.adaptInteger(category, "stone", 1, configuration, textConfigData);
-    KorConfigUtil.adaptInteger(category, "iron", 2, configuration, textConfigData);
-    KorConfigUtil.adaptInteger(category, "diamond", 3, configuration, textConfigData);
+    KorConfigUtil.adaptInteger(category, "iron", 1, configuration, textConfigData);
+    KorConfigUtil.adaptInteger(category, "diamond", 2, configuration, textConfigData);
 
     category = ModuleWaterCan.Config.CATEGORY_ITEM_WATERCAN_FLOWER;
 
@@ -73,8 +73,8 @@ public class ModuleWaterCanConfigAdapter implements
 
     KorConfigUtil.adaptInteger(category, "wood", 0, configuration, textConfigData);
     KorConfigUtil.adaptInteger(category, "stone", 1, configuration, textConfigData);
-    KorConfigUtil.adaptInteger(category, "iron", 2, configuration, textConfigData);
-    KorConfigUtil.adaptInteger(category, "diamond", 4, configuration, textConfigData);
+    KorConfigUtil.adaptInteger(category, "iron", 1, configuration, textConfigData);
+    KorConfigUtil.adaptInteger(category, "diamond", 2, configuration, textConfigData);
 
     category = ModuleWaterCan.Config.CATEGORY_ITEM_WATERCAN_DELAY_MODIFIER;
 
@@ -86,7 +86,7 @@ public class ModuleWaterCanConfigAdapter implements
 
     KorConfigUtil.adaptInteger(category, "wood", 10, configuration, textConfigData);
     KorConfigUtil.adaptInteger(category, "stone", 20, configuration, textConfigData);
-    KorConfigUtil.adaptInteger(category, "iron", 20, configuration, textConfigData);
+    KorConfigUtil.adaptInteger(category, "iron", 10, configuration, textConfigData);
     KorConfigUtil.adaptInteger(category, "diamond", 20, configuration, textConfigData);
   }
 }

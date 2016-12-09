@@ -3,7 +3,7 @@ package com.sudoplay.mc.korwatercan.module.watercan.item;
 import net.minecraft.world.World;
 
 /**
- * Created by sk3lls on 11/27/2016.
+ * Created by codetaylor on 11/27/2016.
  */
 /* package */ interface IWaterCanParticleSpawner {
 
