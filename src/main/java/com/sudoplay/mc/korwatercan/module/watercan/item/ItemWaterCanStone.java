@@ -21,20 +21,22 @@ import com.sudoplay.mc.korwatercan.shared.WaterCanType;
 })
 
 @KorGenerateModelItemSingleTexture(
-    name = "watercan_stone",
+    name = ItemWaterCanStone.NAME,
     modId = KorWaterCan.MOD_ID
 )
 
 @KorGenerateLangEntries(entries = {
-    @KorLangEntry(key = "item.watercan_stone.name", value = "Water Can (Stone)")
+    @KorLangEntry(key = "item." + ItemWaterCanStone.NAME + ".name", value = "Water Can (Stone)")
 })
 
 @KorGenerateImageSlices(slices = {
-    @KorImageSliceEntry(col = 2, row = 1, target = "items/watercan_stone", source = "KorWaterCan.png")
+    @KorImageSliceEntry(col = 2, row = 1, target = "items/" + ItemWaterCanStone.NAME, source = "KorWaterCan.png")
 })
 
 @ForgeEventListener
 public class ItemWaterCanStone extends AbstractItemWaterCan {
+
+  public static final String NAME = "watercan_stone";
 
   @KorInject
   public ItemWaterCanStone(
@@ -43,7 +45,7 @@ public class ItemWaterCanStone extends AbstractItemWaterCan {
   ) {
     super(
         KorWaterCan.MOD_ID,
-        "watercan_stone",
+        NAME,
         WaterCanType.Stone,
         textConfigData
     );

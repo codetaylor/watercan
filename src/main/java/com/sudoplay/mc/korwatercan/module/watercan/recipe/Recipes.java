@@ -33,9 +33,9 @@ public class Recipes extends
     this.recipeShapedMap.put("watercan_iron", new RecipeShaped(
         KorWaterCan.MOD_ID + ":watercan_iron",
         new String[]{
-            "minecraft:ingot_iron, null, null",
-            "minecraft:ingot_iron, minecraft:bowl, minecraft:ingot_iron",
-            "null, minecraft:ingot_iron, null"
+            "minecraft:iron_ingot, null, null",
+            "minecraft:iron_ingot, minecraft:bucket, minecraft:iron_ingot",
+            "null, minecraft:iron_ingot, null"
         }
     ));
 
@@ -43,7 +43,7 @@ public class Recipes extends
         KorWaterCan.MOD_ID + ":watercan_diamond",
         new String[]{
             "minecraft:diamond, null, null",
-            "minecraft:diamond, minecraft:bowl, minecraft:diamond",
+            "minecraft:diamond, minecraft:bucket, minecraft:diamond",
             "null, minecraft:diamond, null"
         }
     ));

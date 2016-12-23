@@ -21,20 +21,22 @@ import com.sudoplay.mc.korwatercan.shared.WaterCanType;
 })
 
 @KorGenerateModelItemSingleTexture(
-    name = "watercan_diamond",
+    name = ItemWaterCanDiamond.NAME,
     modId = KorWaterCan.MOD_ID
 )
 
 @KorGenerateLangEntries(entries = {
-    @KorLangEntry(key = "item.watercan_diamond.name", value = "Water Can (Diamond)")
+    @KorLangEntry(key = "item." + ItemWaterCanDiamond.NAME + ".name", value = "Water Can (Diamond)")
 })
 
 @KorGenerateImageSlices(slices = {
-    @KorImageSliceEntry(col = 4, row = 1, target = "items/watercan_diamond", source = "KorWaterCan.png")
+    @KorImageSliceEntry(col = 4, row = 1, target = "items/" + ItemWaterCanDiamond.NAME, source = "KorWaterCan.png")
 })
 
 @ForgeEventListener
 public class ItemWaterCanDiamond extends AbstractItemWaterCan {
+
+  public static final String NAME = "watercan_diamond";
 
   @KorInject
   public ItemWaterCanDiamond(
@@ -43,7 +45,7 @@ public class ItemWaterCanDiamond extends AbstractItemWaterCan {
   ) {
     super(
         KorWaterCan.MOD_ID,
-        "watercan_diamond",
+        NAME,
         WaterCanType.Diamond,
         textConfigData
     );
