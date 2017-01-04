@@ -264,7 +264,6 @@ import javax.annotation.Nonnull;
 
   private int getBlockUpdateDelay(IBlockState blockState, Block block) {
     int delay = -1;
-    this.delayModifier = 1;
 
     if (block == Blocks.GRASS) {
       delay = this.delayModifier;

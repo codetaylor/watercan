@@ -8,22 +8,57 @@ buildscript {
     }
 }
 apply plugin: 'net.minecraftforge.gradle.forge'
-//Only edit below this line, the above code adds and enables the nessasary things for Forge to be setup.
 
+def getVersionName = { String workTree ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', "--git-dir=\"${workTree}/.git\"", "--work-tree=\"${workTree}\"", 'describe', '--tags'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
 
-version = "snapshot"
-group= "com.sudoplay.mc.kor" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+project.ext.mcversion = "1.10.2"
+project.ext.korlibversion = project.ext.mcversion + "-0.1.0"
+version = project.ext.mcversion + "-" + getVersionName("${project.projectDir}")
+group = "com.sudoplay.mc.kor"
 archivesBaseName = "ctkorwatercan"
 
-sourceCompatibility = targetCompatibility = "1.8" // Need this here so eclipse task generates correctly.
+compileJava.doFirst {
+    project.sourceSets.main.java.srcDirs.each { dir ->
+        copy {
+            from dir
+            into "${project.buildDir}/modifiedSrc"
+            include "**/*.java"
+            filter {
+                it.replaceAll('@@VERSION@@', project.version)
+            }
+            filter {
+                it.replaceAll('//@@DEPENDENCIES@@', ',dependencies = "required-after:ctkorlib@[' + project.ext.korlibversion + ',)"')
+            }
+            duplicatesStrategy = DuplicatesStrategy.EXCLUDE
+        }
+        println "   [OK] Preprocessed [${dir}]"
+    }
+}
+compileJava.doFirst {
+    source = "${project.buildDir}/modifiedSrc"
+    classpath = project.sourceSets.main.compileClasspath
+    //destinationDir = file("${project.buildDir}/classes")
+}
+compileJava.doLast {
+    println "   [OK] Compiled [${project.name}]"
+}
+
+sourceCompatibility = targetCompatibility = "1.8"
 compileJava {
     sourceCompatibility = targetCompatibility = "1.8"
 }
 
 minecraft {
-    version = "1.10.2-12.18.2.2151"
+    version = project.ext.mcversion + "-12.18.2.2151"
     runDir = "run"
-    
+
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.
@@ -38,21 +73,21 @@ dependencies {
 }
 
 processResources
-{
-    // this will ensure that this task is redone when the versions change.
-    inputs.property "version", project.version
-    inputs.property "mcversion", project.minecraft.version
+        {
+            // this will ensure that this task is redone when the versions change.
+            inputs.property "version", project.version
+            inputs.property "mcversion", project.minecraft.version
 
-    // replace stuff in mcmod.info, nothing else
-    from(sourceSets.main.resources.srcDirs) {
-        include 'mcmod.info'
-                
-        // replace version and mcversion
-        expand 'version':project.version, 'mcversion':project.minecraft.version
-    }
-        
-    // copy everything else, thats not the mcmod.info
-    from(sourceSets.main.resources.srcDirs) {
-        exclude 'mcmod.info'
-    }
-}
+            // replace stuff in mcmod.info, nothing else
+            from(sourceSets.main.resources.srcDirs) {
+                include 'mcmod.info'
+
+                // replace version and mcversion
+                expand 'version': project.version, 'mcversion': project.minecraft.version
+            }
+
+            // copy everything else, thats not the mcmod.info
+            from(sourceSets.main.resources.srcDirs) {
+                exclude 'mcmod.info'
+            }
+        }
