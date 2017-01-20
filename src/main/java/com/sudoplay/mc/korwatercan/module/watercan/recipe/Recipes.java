@@ -47,5 +47,14 @@ public class Recipes extends
             "null, minecraft:diamond, null"
         }
     ));
+
+    this.recipeShapedMap.put("watercan_gold", new RecipeShaped(
+        KorWaterCan.MOD_ID + ":watercan_gold",
+        new String[]{
+            "minecraft:gold_ingot, null, null",
+            "minecraft:gold_ingot, minecraft:bucket, minecraft:gold_ingot",
+            "null, minecraft:gold_ingot, null"
+        }
+    ));
   }
 }

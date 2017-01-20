@@ -8,10 +8,7 @@ import com.sudoplay.mc.kor.spi.event.internal.OnRegisterItemsEvent;
 import com.sudoplay.mc.kor.spi.event.internal.OnRegisterRecipesEvent;
 import com.sudoplay.mc.korwatercan.KorWaterCanCreativeTab;
 import com.sudoplay.mc.korwatercan.module.watercan.config.ModuleWaterCanConfigAdapter;
-import com.sudoplay.mc.korwatercan.module.watercan.item.ItemWaterCanDiamond;
-import com.sudoplay.mc.korwatercan.module.watercan.item.ItemWaterCanIron;
-import com.sudoplay.mc.korwatercan.module.watercan.item.ItemWaterCanStone;
-import com.sudoplay.mc.korwatercan.module.watercan.item.ItemWaterCanWood;
+import com.sudoplay.mc.korwatercan.module.watercan.item.*;
 import com.sudoplay.mc.korwatercan.module.watercan.recipe.RecipeRegistrationDelegate;
 
 import java.io.File;
@@ -65,7 +62,8 @@ public class ModuleWaterCan implements
         ItemWaterCanWood.class,
         ItemWaterCanStone.class,
         ItemWaterCanIron.class,
-        ItemWaterCanDiamond.class
+        ItemWaterCanDiamond.class,
+        ItemWaterCanGold.class
     );
   }
 

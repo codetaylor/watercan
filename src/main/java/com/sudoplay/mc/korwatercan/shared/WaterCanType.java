@@ -13,7 +13,8 @@ public enum WaterCanType implements
   Wood(0, "wood"),
   Stone(1, "stone"),
   Iron(2, "iron"),
-  Diamond(3, "diamond");
+  Diamond(3, "diamond"),
+  Gold(4, "gold");
 
   private final int meta;
   private final String name;
