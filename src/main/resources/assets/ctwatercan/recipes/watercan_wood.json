@@ -1,0 +1,20 @@
+{
+  "result": {
+    "item": "ctwatercan:watercan_wood"
+  },
+  "pattern": [
+    "w  ",
+    "wbw",
+    " w "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "w": {
+      "type": "forge:ore_dict",
+      "ore": "plankWood"
+    },
+    "b": {
+      "item": "minecraft:bowl"
+    }
+  }
+}
