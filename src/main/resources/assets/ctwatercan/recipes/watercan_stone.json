@@ -1,11 +1,11 @@
 {
   "result": {
-    "item": "ctwatercan:watercan_wood"
+    "item": "ctwatercan:watercan_stone"
   },
   "pattern": [
-    "wm ",
-    "wbw",
-    " w "
+    "sm ",
+    "sbs",
+    " s "
   ],
   "type": "forge:ore_shaped",
   "key": {
@@ -13,9 +13,9 @@
       "item": "minecraft:dye",
       "data": 15
     },
-    "w": {
+    "s": {
       "type": "forge:ore_dict",
-      "ore": "plankWood"
+      "ore": "stone"
     },
     "b": {
       "item": "minecraft:bowl"

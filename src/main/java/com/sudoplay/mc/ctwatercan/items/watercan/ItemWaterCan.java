@@ -54,6 +54,7 @@ public class ItemWaterCan extends
     this.setRegistryName(name);
     this.setUnlocalizedName(ModCTWatercan.MOD_ID + "." + name);
     this.setMaxDamage(Config.getCapacity(type));
+    this.setMaxStackSize(1);
 
     if (Config.SHOW_PARTICLES) {
       this.particleSpawner = WaterCanParticleSpawner.INSTANCE;
@@ -63,6 +64,12 @@ public class ItemWaterCan extends
     }
 
     this.waterCanRenderer = new WaterCanRenderer(this);
+  }
+
+  @Override
+  public boolean isEnchantable(ItemStack stack) {
+
+    return false;
   }
 
   @SideOnly(Side.CLIENT)

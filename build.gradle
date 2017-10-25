@@ -19,7 +19,7 @@ def getVersionName = { String workTree ->
 }
 
 project.ext.mcversion = "1.12.2"
-version = project.ext.mcversion + "-" + getVersionName("${project.projectDir}")
+version = getVersionName("${project.projectDir}")
 group = "com.sudoplay.mc"
 archivesBaseName = "ctwatercan"
 
