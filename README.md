@@ -1,3 +1,7 @@
+1.12.2-0.4.4
+
+  * Fix: server crash
+
 1.12.2-0.4.3
 
   * Updated for 1.12.2.
