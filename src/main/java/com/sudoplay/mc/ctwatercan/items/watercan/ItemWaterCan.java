@@ -1,7 +1,7 @@
 package com.sudoplay.mc.ctwatercan.items.watercan;
 
-import com.sudoplay.mc.ctwatercan.ModCTWatercan;
 import com.sudoplay.mc.ctwatercan.Config;
+import com.sudoplay.mc.ctwatercan.ModCTWatercan;
 import com.sudoplay.mc.ctwatercan.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFarmland;
@@ -22,17 +22,16 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
-import net.minecraftforge.client.event.RenderSpecificHandEvent;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
 
-public class ItemWaterCan extends
+public class ItemWaterCan
+    extends
     Item {
 
   private static final int BLOCK_FARMLAND_MAX_MOISTURE = 7;
@@ -40,7 +39,6 @@ public class ItemWaterCan extends
   private static final int MILLI_BUCKETS_PER_USE = 10;
 
   private final IWaterCanParticleSpawner particleSpawner;
-  private final WaterCanRenderer waterCanRenderer;
 
   private final Type type;
 
@@ -62,8 +60,6 @@ public class ItemWaterCan extends
     } else {
       this.particleSpawner = IWaterCanParticleSpawner.NO_OP;
     }
-
-    this.waterCanRenderer = new WaterCanRenderer(this);
   }
 
   @Override
@@ -295,9 +291,4 @@ public class ItemWaterCan extends
     return delay;
   }
 
-  @SubscribeEvent
-  public void onRenderSpecificHandEvent(RenderSpecificHandEvent event) {
-
-    this.waterCanRenderer.onRenderSpecificHandEvent(event);
-  }
 }
