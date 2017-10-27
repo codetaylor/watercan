@@ -1,3 +1,7 @@
+1.12.2-0.4.5
+
+  * Merged zh_CN.lang
+
 1.12.2-0.4.4
 
   * Fix: server crash
