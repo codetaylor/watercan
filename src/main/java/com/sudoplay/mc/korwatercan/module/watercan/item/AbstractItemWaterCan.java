@@ -2,6 +2,7 @@ package com.sudoplay.mc.korwatercan.module.watercan.item;
 
 import com.sudoplay.mc.kor.core.config.text.TextConfigData;
 import com.sudoplay.mc.kor.spi.item.KorBasicItem;
+import com.sudoplay.mc.kor.spi.registry.strategy.KorClientPreInitStrategy;
 import com.sudoplay.mc.kor.spi.util.RNGUtils;
 import com.sudoplay.mc.korwatercan.module.watercan.ModuleWaterCan;
 import com.sudoplay.mc.korwatercan.shared.WaterCanType;
@@ -37,7 +38,7 @@ import javax.annotation.Nonnull;
   private static final int BLOCK_FARMLAND_MAX_MOISTURE = 7;
 
   private final IWaterCanParticleSpawner particleSpawner;
-  private final WaterCanRenderer waterCanRenderer;
+  private WaterCanRenderer waterCanRenderer;
   private int range;
   private float flowerChance;
   private int milliBucketsPerUse;
@@ -78,13 +79,21 @@ import javax.annotation.Nonnull;
       this.particleSpawner = IWaterCanParticleSpawner.NO_OP;
     }
 
-    this.waterCanRenderer = new WaterCanRenderer(this);
     this.milliBucketsPerUse = 10;
 
     this.delayModifier = textConfigData
         .getCategory(ModuleWaterCan.Config.CATEGORY_ITEM_WATERCAN_DELAY_MODIFIER)
         .getInteger(type.getName());
     this.delayModifier = Math.min(40, Math.max(1, this.delayModifier));
+  }
+
+  @Override
+  public KorClientPreInitStrategy getClientPreInitStrategy() {
+
+    return kor -> {
+      KorClientPreInitStrategy.createBasicItemStrategy(this).onClientPreInit(kor);
+      this.waterCanRenderer = new WaterCanRenderer(this);
+    };
   }
 
   @Nonnull

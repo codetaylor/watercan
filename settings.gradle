@@ -1,0 +1,2 @@
+include 'kor-lib'
+project(':kor-lib').projectDir = new File(settingsDir, '../kor-lib')
