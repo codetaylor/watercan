@@ -1,0 +1,46 @@
+#!/bin/bash
+
+# Initialize a string with dashes.
+printf -v fill "%80s" ""
+fill="${fill// /-}"
+
+# Function for printing headers.
+printfmt() { printf '%s%0.'$(( 80 - ${#1} - ${#2} ))'s%s\n' "$1" "$fill" "$2"; }
+
+# Common header formatting.
+header() {
+	echo ""; printfmt "+" "[ $1 ]"
+}
+
+pushd() {
+    command pushd "$@" > /dev/null
+}
+
+popd() {
+    command popd "$@" > /dev/null
+}
+
+# Function to display error message, usage, and exit with code 1.
+die() { echo -e "$*\n"; usage; exit 1; } >&2
+
+# Will die if file does not exist.
+assertFile() {
+	local file="$1"
+	shift 1
+	if [[ ! -f "${file}" ]]; then
+		if [[ "$#" -ne 0 ]]; then
+			die "$@"
+		else
+			die "Missing file: ${file}"
+		fi
+	else
+		echo "   [OK] File: ${file}"
+	fi
+}
+
+# Function to test for element in array.
+containsElement() {
+	local e
+	for e in "${@:2}"; do [[ "$e" == "$1" ]] && return 0; done
+	return 1
+}
