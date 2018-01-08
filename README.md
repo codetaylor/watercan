@@ -1,25 +1,7 @@
-1.12.2-0.4.5
+* [CONFIG.md](https://github.com/codetaylor/ct-watercan/blob/master/CONFIG.md)
+* [CHANGELOG.md](https://github.com/codetaylor/ct-watercan/blob/master/CHANGELOG.md)
+* [LICENSE](https://github.com/codetaylor/ct-watercan/blob/master/LICENSE)
 
-  * Merged zh_CN.lang
+### CT Watercan
 
-1.12.2-0.4.4
-
-  * Fix: server crash
-
-1.12.2-0.4.3
-
-  * Updated for 1.12.2.
-  * Added bonemeal to default recipes.
-
-0.4.0
-
-  * Added: gold watercan - grows crops at the slowest speed, but grows flowers on grass very fast (please refresh configs for kor-watercan or there will be no recipe for this new can)
-
-0.3.0
-
-  * Fix: all watercans grow things at the same speed (really fast - was hardcoded for testing, forgot to remove it)
-  * Fix: texture alignment
-
-0.2.0
-
-  * Initial release
+This mod introduces five tiered, configurable water cans. By default, the diamond tier watercan is set to have an infinite capacity. The gold watercan will grow crops at the slowest speed, but spawn flowers on grass at a high rate. Each watercan can be configured via the config file.

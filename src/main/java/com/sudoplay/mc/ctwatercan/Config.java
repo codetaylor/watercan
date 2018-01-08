@@ -8,11 +8,12 @@ public class Config {
 
   public static final String FILENAME = ModCTWatercan.MOD_ID + ".cfg";
 
-  public static final String CATEGORY_ITEM_WATERCAN_PARTICLES = "1 - WaterCan: Particles";
+  public static final String CATEGORY_ITEM_WATERCAN_PARTICLES = "1 - Client";
   public static final String CATEGORY_ITEM_WATERCAN_CAPACITY = "2 - Capacity";
   public static final String CATEGORY_ITEM_WATERCAN_RANGE = "3 - Range";
   public static final String CATEGORY_ITEM_WATERCAN_FLOWER = "4 - Flower Chance";
   public static final String CATEGORY_ITEM_WATERCAN_DELAY_MODIFIER = "5 - Delay Modifier";
+  public static final String CATEGORY_ITEM_WATERCAN_CONSUME_WATER_SOURCE = "6 - Consume Water Source";
 
   private static final Type[] TYPES = Type.values();
 
@@ -21,6 +22,7 @@ public class Config {
   public static int[] RANGE = new int[TYPES.length];
   public static int[] FLOWER_CHANCE = new int[TYPES.length];
   public static int[] DELAY_MODIFIER = new int[TYPES.length];
+  public static boolean[] CONSUME_WATER_SOURCE = new boolean[TYPES.length];
 
   public static int getCapacity(Type type) {
 
@@ -66,6 +68,21 @@ public class Config {
     Config.readRange(config);
     Config.readFlowerChance(config);
     Config.readDelayModifier(config);
+    Config.readConsumeWaterSource(config);
+  }
+
+  private static void readConsumeWaterSource(Configuration config) {
+
+    config.addCustomCategoryComment(
+        CATEGORY_ITEM_WATERCAN_CONSUME_WATER_SOURCE,
+        "Set to true to consume the water source block when refilling the watercan."
+    );
+
+    CONSUME_WATER_SOURCE[Type.Wood.getMeta()] = Config.getConsumeWaterSource(config, Type.Wood.getName(), false);
+    CONSUME_WATER_SOURCE[Type.Stone.getMeta()] = Config.getConsumeWaterSource(config, Type.Stone.getName(), false);
+    CONSUME_WATER_SOURCE[Type.Iron.getMeta()] = Config.getConsumeWaterSource(config, Type.Iron.getName(), false);
+    CONSUME_WATER_SOURCE[Type.Diamond.getMeta()] = Config.getConsumeWaterSource(config, Type.Diamond.getName(), false);
+    CONSUME_WATER_SOURCE[Type.Gold.getMeta()] = Config.getConsumeWaterSource(config, Type.Gold.getName(), false);
   }
 
   private static void readShowParticles(Configuration config) {
@@ -83,6 +100,7 @@ public class Config {
     config.addCustomCategoryComment(
         CATEGORY_ITEM_WATERCAN_CAPACITY,
         "How much water could a water can can if a water can could can water?" +
+            "\nCapacity in millibuckets." +
             "\n\nSet to zero to make the can never run out of water."
     );
 
@@ -145,7 +163,7 @@ public class Config {
       int defaultValue
   ) {
 
-    return config.getInt(name, CATEGORY_ITEM_WATERCAN_CAPACITY, defaultValue, 0, Integer.MAX_VALUE, "");
+    return config.getInt(name, CATEGORY_ITEM_WATERCAN_CAPACITY, defaultValue, 0, Short.MAX_VALUE, "");
   }
 
   private static int getRange(
@@ -173,5 +191,14 @@ public class Config {
   ) {
 
     return config.getInt(name, CATEGORY_ITEM_WATERCAN_DELAY_MODIFIER, defaultValue, 1, 40, "");
+  }
+
+  private static boolean getConsumeWaterSource(
+      Configuration config,
+      String name,
+      boolean defaultValue
+  ) {
+
+    return config.getBoolean(name, CATEGORY_ITEM_WATERCAN_CONSUME_WATER_SOURCE, defaultValue, "");
   }
 }

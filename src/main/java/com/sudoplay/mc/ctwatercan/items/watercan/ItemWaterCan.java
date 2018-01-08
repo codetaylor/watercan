@@ -10,15 +10,14 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
+import net.minecraft.client.resources.I18n;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ActionResult;
-import net.minecraft.util.EnumActionResult;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
@@ -29,6 +28,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+import java.util.List;
 
 public class ItemWaterCan
     extends
@@ -60,6 +61,20 @@ public class ItemWaterCan
     } else {
       this.particleSpawner = IWaterCanParticleSpawner.NO_OP;
     }
+  }
+
+  @Override
+  public void addInformation(
+      ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn
+  ) {
+
+    super.addInformation(stack, worldIn, tooltip, flagIn);
+
+    tooltip.add(I18n.format(
+        "tooltip.ctwatercan.capacity",
+        stack.getMaxDamage() - stack.getItemDamage(),
+        stack.getMaxDamage()
+    ));
   }
 
   @Override
@@ -103,11 +118,11 @@ public class ItemWaterCan
       }
 
       // capacity check
-      if (this.getMaxDamage() - heldItem.getItemDamage() < this.MILLI_BUCKETS_PER_USE) {
+      if (this.getMaxDamage() - heldItem.getItemDamage() < MILLI_BUCKETS_PER_USE) {
         return EnumActionResult.SUCCESS; // nope
       }
 
-      itemDamage = heldItem.getItemDamage() + this.MILLI_BUCKETS_PER_USE;
+      itemDamage = heldItem.getItemDamage() + MILLI_BUCKETS_PER_USE;
       itemDamage = Math.min(itemDamage, this.getMaxDamage());
       heldItem.setItemDamage(itemDamage);
     }
@@ -155,10 +170,25 @@ public class ItemWaterCan
           return ActionResult.newResult(EnumActionResult.FAIL, itemStack);
         }
 
-        int damage = itemStack.getItemDamage() - 1000;
-        damage = Math.max(0, damage);
-        itemStack.setItemDamage(damage);
-        player.playSound(SoundEvents.ITEM_BUCKET_FILL, 1.0f, 1.0f);
+        if (!world.isRemote) {
+          int damage = itemStack.getItemDamage() - 1000;
+          damage = Math.max(0, damage);
+          itemStack.setItemDamage(damage);
+          world.playSound(
+              player,
+              player.posX,
+              player.posY,
+              player.posZ,
+              SoundEvents.ITEM_BUCKET_FILL,
+              SoundCategory.PLAYERS,
+              1,
+              1
+          );
+
+          if (Config.CONSUME_WATER_SOURCE[this.type.getMeta()]) {
+            world.setBlockToAir(blockPos);
+          }
+        }
         return ActionResult.newResult(EnumActionResult.SUCCESS, itemStack);
       }
     }
@@ -181,7 +211,7 @@ public class ItemWaterCan
 
     } else {
       // effect on the server
-      _waterBlockRange(world, x, y, z, range, Config.getFlowerChance(this.type) * FLOWER_CHANCE_SCALAR);
+      this._waterBlockRange(world, x, y, z, range, Config.getFlowerChance(this.type) * FLOWER_CHANCE_SCALAR);
     }
   }
 
@@ -211,7 +241,7 @@ public class ItemWaterCan
 
           // skip air blocks
           if (!world.isAirBlock(pos)) {
-            waterBlock(world, flowerChance, pos, blockState, block);
+            this.waterBlock(world, flowerChance, pos, blockState, block);
           }
         }
       }
