@@ -32,8 +32,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class ItemWaterCan
-    extends
-    Item {
+    extends Item {
 
   private static final int BLOCK_FARMLAND_MAX_MOISTURE = 7;
   private static final float FLOWER_CHANCE_SCALAR = 0.0005f;
@@ -64,6 +63,7 @@ public class ItemWaterCan
   }
 
   @Override
+  @SideOnly(Side.CLIENT)
   public void addInformation(
       ItemStack stack, @Nullable World worldIn, List<String> tooltip, ITooltipFlag flagIn
   ) {

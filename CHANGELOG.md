@@ -1,3 +1,6 @@
+1.12.2-0.5.6
+* Fixed: server crash (#4)
+
 1.12.2-0.5.5
 * Added: config option to consume source block when refilling the watercans
 * Added: tooltip to display capacity
