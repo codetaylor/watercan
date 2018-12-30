@@ -321,4 +321,9 @@ public class ItemWaterCan
     return delay;
   }
 
+  @Override
+  public int getRGBDurabilityForDisplay(ItemStack stack) {
+
+    return 0x4466FF;
+  }
 }
