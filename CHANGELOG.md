@@ -1,18 +1,25 @@
-1.12.2-0.5.6
+0.6.0
+
+  * Changed:
+    * Watercan durability bar color changed from green to blue
+
+---
+
+0.5.6
 * Fixed: server crash (#4)
 
-1.12.2-0.5.5
+0.5.5
 * Added: config option to consume source block when refilling the watercans
 * Added: tooltip to display capacity
 * Changed: watercan max capacity from 2^31 - 1 to 32767
 
-1.12.2-0.4.5
+0.4.5
 * Merged zh_CN.lang
 
-1.12.2-0.4.4
+0.4.4
 * Fix: server crash
 
-1.12.2-0.4.3
+0.4.3
 * Updated for 1.12.2.
 * Added bonemeal to default recipes.
 
