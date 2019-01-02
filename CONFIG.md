@@ -1,141 +1,307 @@
 ```
 # Configuration file
 
-##########################################################################################################
-# 1 - client
-#--------------------------------------------------------------------------------------------------------#
-# Turn off all the particles spawned by the water can here.
-##########################################################################################################
+general {
 
-"1 - client" {
-    #  [default: true]
-    B:spawnWaterParticles=true
-}
+    client {
+        # Set to false to disable client-side particle display when watering.
+        B:SPAWN_WATER_PARTICLES=true
+    }
 
+    watercan_wood {
+        # Defines the capacity of the watercan in millibuckets.
+        # Set to zero to make the can never run out of water.
+        # Range: [0,2147483647]
+        # Default: 1000
+        I:CAPACITY=1000
 
-##########################################################################################################
-# 2 - capacity
-#--------------------------------------------------------------------------------------------------------#
-# How much water could a water can can if a water can could can water?
-# Capacity in millibuckets.
-# 
-# Set to zero to make the can never run out of water.
-##########################################################################################################
+        # Set to true to consume the water source block when filling the watercan.
+        # Default: false
+        B:CONSUME_WATER_SOURCE=false
 
-"2 - capacity" {
-    #  [range: 0 ~ 2147483647, default: 0]
-    I:diamond=0
+        # Use the delay modifier to speed up or slow down growth.
+        # Smaller is faster.
+        # Range: [1,40]
+        # Default: 5
+        I:DELAY_MODIFIER=5
 
-    #  [range: 0 ~ 2147483647, default: 4000]
-    I:gold=4000
+        # Set to false to prevent the watercan from extinguishing fire.
+        # Default: true
+        B:EXTINGUISH_FIRE=true
 
-    #  [range: 0 ~ 2147483647, default: 4000]
-    I:iron=4000
+        # The flower chance controls the spawn rate of flowers on watered grass blocks.
+        # The higher the number the higher the chance to spawn flowers while watering.
+        # Range: [0,100]
+        # Default: 0
+        I:FLOWER_CHANCE=0
 
-    #  [range: 0 ~ 2147483647, default: 2000]
-    I:stone=2000
+        # Set to false to prevent the watercan from growing crops / growables.
+        # Default: true
+        B:GROW_CROPS=true
 
-    #  [range: 0 ~ 2147483647, default: 1000]
-    I:wood=1000
-}
+        # Set to false to prevent the watercan from growing saplings.
+        # Default: true
+        B:GROW_SAPLINGS=true
 
+        # Set to false to prevent the watercan from moisturizing farmland.
+        # Default: true
+        B:MOISTURIZE_FARMLAND=true
 
-##########################################################################################################
-# 3 - range
-#--------------------------------------------------------------------------------------------------------#
-# This is the radius that the water can will spread out from the targeted block.
-# For example, a radius of one will water a 3x3 area and a radius of two will water a 5x5 area.
-##########################################################################################################
+        # Defines the range of the watercan.
+        # This is the radius that the water will spread out from the targeted block.
+        # For example, a radius of one will water a 3x3 area and a radius of two will water a 5x5 area.
+        # Range: [0,8]
+        # Default: 0
+        I:RANGE=0
 
-"3 - range" {
-    #  [range: 0 ~ 8, default: 2]
-    I:diamond=2
+        # Set to false to prevent the watercan from spawning flowers on grass.
+        # Default: true
+        B:SPAWN_FLOWERS=true
 
-    #  [range: 0 ~ 8, default: 1]
-    I:gold=1
+        # Set to false to prevent the watercan from spreading grass.
+        # Default: true
+        B:SPREAD_GRASS=true
 
-    #  [range: 0 ~ 8, default: 1]
-    I:iron=1
+        # Set to false to prevent the watercan from spreading mycelium.
+        # Default: true
+        B:SPREAD_MYCELIUM=true
+    }
 
-    #  [range: 0 ~ 8, default: 1]
-    I:stone=1
+    watercan_stone {
+        # Defines the capacity of the watercan in millibuckets.
+        # Set to zero to make the can never run out of water.
+        # Range: [0,2147483647]
+        # Default: 2000
+        I:CAPACITY=2000
 
-    #  [range: 0 ~ 8, default: 0]
-    I:wood=0
-}
+        # Set to true to consume the water source block when filling the watercan.
+        # Default: false
+        B:CONSUME_WATER_SOURCE=false
 
+        # Use the delay modifier to speed up or slow down growth.
+        # Smaller is faster.
+        # Range: [1,40]
+        # Default: 15
+        I:DELAY_MODIFIER=15
 
-##########################################################################################################
-# 4 - flower chance
-#--------------------------------------------------------------------------------------------------------#
-# The flower chance controls the spawn rate of flowers on watered grass blocks.
-# The higher the number the higher the chance to spawn flowers while watering.
-# Range: 0 to 100
-##########################################################################################################
+        # Set to false to prevent the watercan from extinguishing fire.
+        # Default: true
+        B:EXTINGUISH_FIRE=true
 
-"4 - flower chance" {
-    #  [range: 0 ~ 100, default: 2]
-    I:diamond=2
+        # The flower chance controls the spawn rate of flowers on watered grass blocks.
+        # The higher the number the higher the chance to spawn flowers while watering.
+        # Range: [0,100]
+        # Default: 1
+        I:FLOWER_CHANCE=1
 
-    #  [range: 0 ~ 100, default: 50]
-    I:gold=50
+        # Set to false to prevent the watercan from growing crops / growables.
+        # Default: true
+        B:GROW_CROPS=true
 
-    #  [range: 0 ~ 100, default: 1]
-    I:iron=1
+        # Set to false to prevent the watercan from growing saplings.
+        # Default: true
+        B:GROW_SAPLINGS=true
 
-    #  [range: 0 ~ 100, default: 1]
-    I:stone=1
+        # Set to false to prevent the watercan from moisturizing farmland.
+        # Default: true
+        B:MOISTURIZE_FARMLAND=true
 
-    #  [range: 0 ~ 100, default: 0]
-    I:wood=0
-}
+        # Defines the range of the watercan.
+        # This is the radius that the water will spread out from the targeted block.
+        # For example, a radius of one will water a 3x3 area and a radius of two will water a 5x5 area.
+        # Range: [0,8]
+        # Default: 1
+        I:RANGE=1
 
+        # Set to false to prevent the watercan from spawning flowers on grass.
+        # Default: true
+        B:SPAWN_FLOWERS=true
 
-##########################################################################################################
-# 5 - delay modifier
-#--------------------------------------------------------------------------------------------------------#
-# Use the delay modifier to speed up or slow down growth.
-# Range: 1 to 40 (smaller is faster)
-##########################################################################################################
+        # Set to false to prevent the watercan from spreading grass.
+        # Default: true
+        B:SPREAD_GRASS=true
 
-"5 - delay modifier" {
-    #  [range: 1 ~ 40, default: 10]
-    I:diamond=10
+        # Set to false to prevent the watercan from spreading mycelium.
+        # Default: true
+        B:SPREAD_MYCELIUM=true
+    }
 
-    #  [range: 1 ~ 40, default: 40]
-    I:gold=40
+    watercan_iron {
+        # Defines the capacity of the watercan in millibuckets.
+        # Set to zero to make the can never run out of water.
+        # Range: [0,2147483647]
+        # Default: 4000
+        I:CAPACITY=4000
 
-    #  [range: 1 ~ 40, default: 10]
-    I:iron=10
+        # Set to true to consume the water source block when filling the watercan.
+        # Default: false
+        B:CONSUME_WATER_SOURCE=false
 
-    #  [range: 1 ~ 40, default: 15]
-    I:stone=15
+        # Use the delay modifier to speed up or slow down growth.
+        # Smaller is faster.
+        # Range: [1,40]
+        # Default: 10
+        I:DELAY_MODIFIER=10
 
-    #  [range: 1 ~ 40, default: 5]
-    I:wood=5
-}
+        # Set to false to prevent the watercan from extinguishing fire.
+        # Default: true
+        B:EXTINGUISH_FIRE=true
 
+        # The flower chance controls the spawn rate of flowers on watered grass blocks.
+        # The higher the number the higher the chance to spawn flowers while watering.
+        # Range: [0,100]
+        # Default: 1
+        I:FLOWER_CHANCE=1
 
-##########################################################################################################
-# 6 - consume water source
-#--------------------------------------------------------------------------------------------------------#
-# Set to true to consume the water source block when refilling the watercan.
-##########################################################################################################
+        # Set to false to prevent the watercan from growing crops / growables.
+        # Default: true
+        B:GROW_CROPS=true
 
-"6 - consume water source" {
-    #  [default: false]
-    B:diamond=false
+        # Set to false to prevent the watercan from growing saplings.
+        # Default: true
+        B:GROW_SAPLINGS=true
 
-    #  [default: false]
-    B:gold=false
+        # Set to false to prevent the watercan from moisturizing farmland.
+        # Default: true
+        B:MOISTURIZE_FARMLAND=true
 
-    #  [default: false]
-    B:iron=false
+        # Defines the range of the watercan.
+        # This is the radius that the water will spread out from the targeted block.
+        # For example, a radius of one will water a 3x3 area and a radius of two will water a 5x5 area.
+        # Range: [0,8]
+        # Default: 1
+        I:RANGE=1
 
-    #  [default: false]
-    B:stone=false
+        # Set to false to prevent the watercan from spawning flowers on grass.
+        # Default: true
+        B:SPAWN_FLOWERS=true
 
-    #  [default: false]
-    B:wood=false
+        # Set to false to prevent the watercan from spreading grass.
+        # Default: true
+        B:SPREAD_GRASS=true
+
+        # Set to false to prevent the watercan from spreading mycelium.
+        # Default: true
+        B:SPREAD_MYCELIUM=true
+    }
+
+    watercan_gold {
+        # Defines the capacity of the watercan in millibuckets.
+        # Set to zero to make the can never run out of water.
+        # Range: [0,2147483647]
+        # Default: 4000
+        I:CAPACITY=4000
+
+        # Set to true to consume the water source block when filling the watercan.
+        # Default: false
+        B:CONSUME_WATER_SOURCE=false
+
+        # Use the delay modifier to speed up or slow down growth.
+        # Smaller is faster.
+        # Range: [1,40]
+        # Default: 5
+        I:DELAY_MODIFIER=40
+
+        # Set to false to prevent the watercan from extinguishing fire.
+        # Default: true
+        B:EXTINGUISH_FIRE=true
+
+        # The flower chance controls the spawn rate of flowers on watered grass blocks.
+        # The higher the number the higher the chance to spawn flowers while watering.
+        # Range: [0,100]
+        # Default: 50
+        I:FLOWER_CHANCE=50
+
+        # Set to false to prevent the watercan from growing crops / growables.
+        # Default: true
+        B:GROW_CROPS=true
+
+        # Set to false to prevent the watercan from growing saplings.
+        # Default: true
+        B:GROW_SAPLINGS=true
+
+        # Set to false to prevent the watercan from moisturizing farmland.
+        # Default: true
+        B:MOISTURIZE_FARMLAND=true
+
+        # Defines the range of the watercan.
+        # This is the radius that the water will spread out from the targeted block.
+        # For example, a radius of one will water a 3x3 area and a radius of two will water a 5x5 area.
+        # Range: [0,8]
+        # Default: 1
+        I:RANGE=1
+
+        # Set to false to prevent the watercan from spawning flowers on grass.
+        # Default: true
+        B:SPAWN_FLOWERS=true
+
+        # Set to false to prevent the watercan from spreading grass.
+        # Default: true
+        B:SPREAD_GRASS=true
+
+        # Set to false to prevent the watercan from spreading mycelium.
+        # Default: true
+        B:SPREAD_MYCELIUM=true
+    }
+
+    watercan_diamond {
+        # Defines the capacity of the watercan in millibuckets.
+        # Set to zero to make the can never run out of water.
+        # Range: [0,2147483647]
+        # Default: 0
+        I:CAPACITY=0
+
+        # Set to true to consume the water source block when filling the watercan.
+        # Default: false
+        B:CONSUME_WATER_SOURCE=false
+
+        # Use the delay modifier to speed up or slow down growth.
+        # Smaller is faster.
+        # Range: [1,40]
+        # Default: 5
+        I:DELAY_MODIFIER=10
+
+        # Set to false to prevent the watercan from extinguishing fire.
+        # Default: true
+        B:EXTINGUISH_FIRE=true
+
+        # The flower chance controls the spawn rate of flowers on watered grass blocks.
+        # The higher the number the higher the chance to spawn flowers while watering.
+        # Range: [0,100]
+        # Default: 2
+        I:FLOWER_CHANCE=2
+
+        # Set to false to prevent the watercan from growing crops / growables.
+        # Default: true
+        B:GROW_CROPS=true
+
+        # Set to false to prevent the watercan from growing saplings.
+        # Default: true
+        B:GROW_SAPLINGS=true
+
+        # Set to false to prevent the watercan from moisturizing farmland.
+        # Default: true
+        B:MOISTURIZE_FARMLAND=true
+
+        # Defines the range of the watercan.
+        # This is the radius that the water will spread out from the targeted block.
+        # For example, a radius of one will water a 3x3 area and a radius of two will water a 5x5 area.
+        # Range: [0,8]
+        # Default: 2
+        I:RANGE=2
+
+        # Set to false to prevent the watercan from spawning flowers on grass.
+        # Default: true
+        B:SPAWN_FLOWERS=true
+
+        # Set to false to prevent the watercan from spreading grass.
+        # Default: true
+        B:SPREAD_GRASS=true
+
+        # Set to false to prevent the watercan from spreading mycelium.
+        # Default: true
+        B:SPREAD_MYCELIUM=true
+    }
+
 }
 ```
