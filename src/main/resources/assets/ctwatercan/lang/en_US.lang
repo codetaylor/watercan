@@ -1,7 +1,0 @@
-item.ctwatercan.watercan_wood.name=Water Can (Wood)
-item.ctwatercan.watercan_stone.name=Water Can (Stone)
-item.ctwatercan.watercan_iron.name=Water Can (Iron)
-item.ctwatercan.watercan_diamond.name=Water Can (Diamond)
-item.ctwatercan.watercan_gold.name=Water Can (Gold)
-
-tooltip.ctwatercan.capacity=%s/%s mB

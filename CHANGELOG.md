@@ -1,3 +1,25 @@
+1.0.0
+
+  NOTE: This version is a major rewrite of the mod and the major version bump reflects this. Everything has changed, including the config file name and contents, mod id, and the item ids.
+
+  * Changed:
+    * Mod id is now `watercan`
+    * Item ids are now: `watercan:watercan_wood`, `watercan:watercan_stone`, `watercan:watercan_iron`, `watercan:watercan_gold`, `watercan:watercan_diamond`
+
+  * Added:
+    * Config file includes booleans to enable / disable:
+      * growing crops
+      * growing saplings
+      * growing flowers
+      * spreading grass
+      * spreading mycelium
+      * extinguishing fire
+      * moisturizing farmland
+
+  * Requires: Athenaeum >= 1.15.0
+
+---
+
 0.6.0
 
   * Changed:

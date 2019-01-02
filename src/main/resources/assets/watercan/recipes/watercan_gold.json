@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "watercan:watercan_gold"
+  },
+  "pattern": [
+    "gm ",
+    "gbg",
+    " g "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "m": {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    "g": {
+      "type": "forge:ore_dict",
+      "ore": "ingotGold"
+    },
+    "b": {
+      "item": "minecraft:bucket"
+    }
+  }
+}
