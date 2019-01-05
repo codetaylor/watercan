@@ -28,7 +28,7 @@ import org.lwjgl.input.Mouse;
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
-@Mod.EventBusSubscriber
+@Mod.EventBusSubscriber(Side.CLIENT)
 public class RenderSpecificHandEventHandler {
 
   @SubscribeEvent

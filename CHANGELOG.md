@@ -1,3 +1,10 @@
+1.0.1
+
+  * Fixed:
+    * Server crash (#6)
+
+---
+
 1.0.0
 
   NOTE: This version is a major rewrite of the mod and the major version bump reflects this. Everything has changed, including the config file name and contents, mod id, and the item ids.
