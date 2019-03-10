@@ -1,3 +1,10 @@
+1.0.2
+
+  * Fixed:
+    * Missing lang entry for creative tab
+
+---
+
 1.0.1
 
   * Fixed:
