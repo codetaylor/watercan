@@ -52,7 +52,7 @@ compileJava {
 }
 
 minecraft {
-    version = project.ext.mcversion + "-14.23.2.2618"
+    version = project.ext.mcversion + "-14.23.5.2784"
     runDir = "run"
 
     // the mappings can be changed at any time, and must be in the following format.
