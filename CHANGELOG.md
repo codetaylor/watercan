@@ -1,3 +1,10 @@
+1.0.3
+
+  * Added:
+    * ru_ru.lang
+
+---
+
 1.0.2
 
   * Fixed:
