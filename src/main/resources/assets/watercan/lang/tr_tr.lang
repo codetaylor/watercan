@@ -1,0 +1,9 @@
+itemGroup.watercan=Sulama KabÄ±
+
+item.watercan.watercan.wood.name=Sulama KabÄ± (Tahta)
+item.watercan.watercan.stone.name=Sulama KabÄ± (TaÅŸ)
+item.watercan.watercan.iron.name=Sulama KabÄ± (Demir)
+item.watercan.watercan.diamond.name=Sulama KabÄ± (Elmas)
+item.watercan.watercan.gold.name=Sulama KabÄ± (AltÄ±n)
+
+tooltip.watercan.capacity=%s/%s mB
