@@ -20,6 +20,12 @@ public class ModWatercanConfig {
   public static class WatercanWood {
 
     @Config.Comment({
+        "If true, the watercan can be used in a dispenser.",
+        "Default: " + true
+    })
+    public boolean IS_DISPENSABLE = true;
+
+    @Config.Comment({
         "Defines the capacity of the watercan in millibuckets.",
         "Set to zero to make the can never run out of water.",
         "Range: [0,2147483647]",
@@ -105,6 +111,12 @@ public class ModWatercanConfig {
   public static WatercanStone WATERCAN_STONE = new WatercanStone();
 
   public static class WatercanStone {
+
+    @Config.Comment({
+        "If true, the watercan can be used in a dispenser.",
+        "Default: " + true
+    })
+    public boolean IS_DISPENSABLE = true;
 
     @Config.Comment({
         "Defines the capacity of the watercan in millibuckets.",
@@ -194,6 +206,12 @@ public class ModWatercanConfig {
   public static class WatercanIron {
 
     @Config.Comment({
+        "If true, the watercan can be used in a dispenser.",
+        "Default: " + true
+    })
+    public boolean IS_DISPENSABLE = true;
+
+    @Config.Comment({
         "Defines the capacity of the watercan in millibuckets.",
         "Set to zero to make the can never run out of water.",
         "Range: [0,2147483647]",
@@ -281,6 +299,12 @@ public class ModWatercanConfig {
   public static class WatercanGold {
 
     @Config.Comment({
+        "If true, the watercan can be used in a dispenser.",
+        "Default: " + true
+    })
+    public boolean IS_DISPENSABLE = true;
+
+    @Config.Comment({
         "Defines the capacity of the watercan in millibuckets.",
         "Set to zero to make the can never run out of water.",
         "Range: [0,2147483647]",
@@ -366,6 +390,12 @@ public class ModWatercanConfig {
   public static WatercanDiamond WATERCAN_DIAMOND = new WatercanDiamond();
 
   public static class WatercanDiamond {
+
+    @Config.Comment({
+        "If true, the watercan can be used in a dispenser.",
+        "Default: " + true
+    })
+    public boolean IS_DISPENSABLE = true;
 
     @Config.Comment({
         "Defines the capacity of the watercan in millibuckets.",

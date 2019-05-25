@@ -8,6 +8,12 @@ public class ItemWatercanStone
   public static final String NAME = "watercan_stone";
 
   @Override
+  protected boolean isDispensable() {
+
+    return ModWatercanConfig.WATERCAN_STONE.IS_DISPENSABLE;
+  }
+
+  @Override
   protected int getCapacity() {
 
     return ModWatercanConfig.WATERCAN_STONE.CAPACITY;

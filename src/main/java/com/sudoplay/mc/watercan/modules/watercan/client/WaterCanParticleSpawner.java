@@ -6,6 +6,7 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 
@@ -37,9 +38,11 @@ public class WaterCanParticleSpawner
 
     for (int j = 0; j < numParticles; j++) {
       rx = Util.RANDOM.nextGaussian();
+      rx = MathHelper.clamp(rx, -1, 1);
       rz = Util.RANDOM.nextGaussian();
-      xCoord = x + rx * 0.6 * range;
-      zCoord = z + rz * 0.6 * range;
+      rz = MathHelper.clamp(rz, -1, 1);
+      xCoord = x + rx * range;
+      zCoord = z + rz * range;
 
       pos = this.getParticleSpawnBlockPos(world, xCoord, y, zCoord);
 

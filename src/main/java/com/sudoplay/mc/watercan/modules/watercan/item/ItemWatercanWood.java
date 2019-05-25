@@ -8,6 +8,12 @@ public class ItemWatercanWood
   public static final String NAME = "watercan_wood";
 
   @Override
+  protected boolean isDispensable() {
+
+    return ModWatercanConfig.WATERCAN_WOOD.IS_DISPENSABLE;
+  }
+
+  @Override
   protected int getCapacity() {
 
     return ModWatercanConfig.WATERCAN_WOOD.CAPACITY;

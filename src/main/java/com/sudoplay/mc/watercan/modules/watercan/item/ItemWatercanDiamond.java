@@ -8,6 +8,12 @@ public class ItemWatercanDiamond
   public static final String NAME = "watercan_diamond";
 
   @Override
+  protected boolean isDispensable() {
+
+    return ModWatercanConfig.WATERCAN_DIAMOND.IS_DISPENSABLE;
+  }
+
+  @Override
   protected int getCapacity() {
 
     return ModWatercanConfig.WATERCAN_DIAMOND.CAPACITY;

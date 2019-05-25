@@ -1,17 +1,18 @@
 package com.sudoplay.mc.watercan.modules.watercan.item;
 
 import com.sudoplay.mc.watercan.ModWatercanConfig;
+import com.sudoplay.mc.watercan.modules.watercan.ModuleWatercan;
 import com.sudoplay.mc.watercan.modules.watercan.client.IWaterCanParticleSpawner;
 import com.sudoplay.mc.watercan.modules.watercan.client.WaterCanParticleSpawner;
+import com.sudoplay.mc.watercan.modules.watercan.network.SCPacketDispenseWatercan;
 import com.sudoplay.mc.watercan.util.Util;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockFarmland;
-import net.minecraft.block.BlockSapling;
-import net.minecraft.block.IGrowable;
+import net.minecraft.block.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.util.ITooltipFlag;
+import net.minecraft.dispenser.IBehaviorDispenseItem;
+import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.SoundEvents;
@@ -33,9 +34,10 @@ import java.util.List;
 public abstract class ItemWaterCanBase
     extends Item {
 
+  public static final int MILLI_BUCKETS_PER_USE = 10;
+
   private static final int BLOCK_FARMLAND_MAX_MOISTURE = 7;
   private static final float FLOWER_CHANCE_SCALAR = 0.0005f;
-  private static final int MILLI_BUCKETS_PER_USE = 10;
 
   private final IWaterCanParticleSpawner particleSpawner;
 
@@ -78,6 +80,8 @@ public abstract class ItemWaterCanBase
 
   protected abstract int getFlowerChance();
 
+  protected abstract boolean isDispensable();
+
   @Override
   @SideOnly(Side.CLIENT)
   public void addInformation(
@@ -112,29 +116,43 @@ public abstract class ItemWaterCanBase
       float hitZ
   ) {
 
-    int itemDamage;
+    ItemStack itemStack = player.getHeldItem(hand);
+    this.activate(itemStack, world, player, pos);
+    return EnumActionResult.SUCCESS;
+  }
+
+  public void activate(ItemStack itemStack, World world, @Nullable EntityPlayer player, BlockPos pos) {
 
     if (this.getMaxDamage() > 0) {
 
       // water check
-      ItemStack heldItem = player.getHeldItem(hand);
-      EnumActionResult waterCheckResult = this.checkRefill(heldItem, world, player).getType();
+      EnumActionResult waterCheckResult = null;
 
-      if (waterCheckResult == EnumActionResult.SUCCESS) {
-        return EnumActionResult.SUCCESS; // refill success
+      // player will be null when the watercan is activated from a dispenser
+      // we only want to do a want to do a water check when the can is being
+      // activated by a player (or fake player)
+      if (player != null) {
+        waterCheckResult = this.checkRefill(itemStack, world, player).getType();
+      }
 
-      } else if (waterCheckResult == EnumActionResult.FAIL) {
-        return EnumActionResult.SUCCESS; // trying to get water, but can is full
+      if (waterCheckResult != null) {
+
+        if (waterCheckResult == EnumActionResult.SUCCESS) {
+          return; // refill success
+
+        } else if (waterCheckResult == EnumActionResult.FAIL) {
+          return; // trying to get water, but can is full
+        }
       }
 
       // capacity check
-      if (this.getMaxDamage() - heldItem.getItemDamage() < MILLI_BUCKETS_PER_USE) {
-        return EnumActionResult.SUCCESS; // nope
+      if (this.getMaxDamage() - itemStack.getItemDamage() < MILLI_BUCKETS_PER_USE) {
+        return; // nope
       }
 
-      itemDamage = heldItem.getItemDamage() + MILLI_BUCKETS_PER_USE;
+      int itemDamage = itemStack.getItemDamage() + MILLI_BUCKETS_PER_USE;
       itemDamage = Math.min(itemDamage, this.getMaxDamage());
-      heldItem.setItemDamage(itemDamage);
+      itemStack.setItemDamage(itemDamage);
     }
 
     this.waterBlockRange(
@@ -143,8 +161,6 @@ public abstract class ItemWaterCanBase
         pos.getY() + 0.5,
         pos.getZ() + 0.5
     );
-
-    return EnumActionResult.SUCCESS;
   }
 
   @Nonnull
@@ -213,16 +229,21 @@ public abstract class ItemWaterCanBase
       double z
   ) {
 
-    int range = this.getRange();
-
     if (world.isRemote) {
       // particles on the client
-      this.particleSpawner.spawnParticles(world, x, y, z, range);
+      this.spawnParticles(world, x, y, z);
 
     } else {
       // effect on the server
-      this._waterBlockRange(world, x, y, z, range, this.getFlowerChance() * FLOWER_CHANCE_SCALAR);
+      int range = this.getRange();
+      int flowerChance = this.getFlowerChance();
+      this._waterBlockRange(world, x, y, z, range, flowerChance * FLOWER_CHANCE_SCALAR);
     }
+  }
+
+  public void spawnParticles(World world, double x, double y, double z) {
+
+    this.particleSpawner.spawnParticles(world, x, y, z, this.getRange());
   }
 
   private void _waterBlockRange(
@@ -343,5 +364,40 @@ public abstract class ItemWaterCanBase
   public int getRGBDurabilityForDisplay(ItemStack stack) {
 
     return 0x4466FF;
+  }
+
+  public static class DispenserBehavior
+      implements IBehaviorDispenseItem {
+
+    @Nonnull
+    @Override
+    public ItemStack dispense(@Nonnull IBlockSource source, @Nonnull ItemStack stack) {
+
+      Item item = stack.getItem();
+
+      if (item instanceof ItemWaterCanBase
+          && ((ItemWaterCanBase) item).isDispensable()) {
+
+        World world = source.getWorld();
+        BlockPos pos = source.getBlockPos();
+        IBlockState blockState = world.getBlockState(pos);
+
+        if (!world.isRemote
+            && blockState.getBlock() instanceof BlockDispenser) {
+
+          EnumFacing facing = blockState.getValue(BlockDispenser.FACING);
+          BlockPos offset = pos.offset(facing, ((ItemWaterCanBase) item).getRange() + 1);
+          ItemStack copy = stack.copy();
+          ((ItemWaterCanBase) item).activate(stack, world, null, offset);
+
+          // client packet
+          int dimension = world.provider.getDimension();
+          SCPacketDispenseWatercan packet = new SCPacketDispenseWatercan(copy, offset);
+          ModuleWatercan.PACKET_SERVICE.sendToAllAround(packet, dimension, offset);
+        }
+      }
+
+      return stack;
+    }
   }
 }

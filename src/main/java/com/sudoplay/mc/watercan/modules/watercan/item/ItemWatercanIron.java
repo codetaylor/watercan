@@ -8,6 +8,12 @@ public class ItemWatercanIron
   public static final String NAME = "watercan_iron";
 
   @Override
+  protected boolean isDispensable() {
+
+    return ModWatercanConfig.WATERCAN_IRON.IS_DISPENSABLE;
+  }
+
+  @Override
   protected int getCapacity() {
 
     return ModWatercanConfig.WATERCAN_IRON.CAPACITY;
