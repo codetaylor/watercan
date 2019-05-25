@@ -1,4 +1,4 @@
-1.0.3
+1.1.0
 
   * Added:
     * tr_tr.lang (#5, thanks Emirhangg)
