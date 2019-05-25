@@ -1,7 +1,9 @@
 1.0.3
 
   * Added:
-    * ru_ru.lang
+    * tr_tr.lang (#5, thanks Emirhangg)
+    * ru_ru.lang (thanks Serj4ever)
+    * Dispenser behavior
 
 ---
 
