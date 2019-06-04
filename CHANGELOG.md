@@ -1,3 +1,9 @@
+1.1.1
+  * Fixed:
+    * Server crash (#8)
+
+---
+
 1.1.0
 
   * Added:
