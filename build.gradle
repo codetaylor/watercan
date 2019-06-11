@@ -19,6 +19,9 @@ def getVersionName = { String workTree ->
 }
 
 project.ext.mcversion = "1.12.2"
+project.ext.athenaeum_version = "1.12.2-1.17.0"
+project.ext.dependencies = ',dependencies = "required-after:athenaeum@[' + project.ext.athenaeum_version + ',);"'
+
 version = project.ext.mcversion + "-" + getVersionName("${project.projectDir}")
 group = "com.sudoplay.mc"
 archivesBaseName = "watercan"
@@ -31,6 +34,9 @@ compileJava.doFirst {
             include "**/*.java"
             filter {
                 it.replaceAll('@@VERSION@@', project.version)
+            }
+            filter {
+                it.replaceAll('//@@DEPENDENCIES@@', project.ext.dependencies)
             }
             duplicatesStrategy = DuplicatesStrategy.EXCLUDE
         }
