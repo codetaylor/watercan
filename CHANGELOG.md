@@ -1,4 +1,12 @@
+1.1.2
+
+  * Fixed:
+    * Missing dependency warning
+
+---
+
 1.1.1
+
   * Fixed:
     * Server crash (#8)
 
