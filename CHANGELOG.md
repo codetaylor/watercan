@@ -1,3 +1,10 @@
+1.1.3
+
+  * Added:
+    * de_de.lang (#12, thanks jottyfan)
+
+---
+
 1.1.2
 
   * Fixed:
