@@ -1,0 +1,9 @@
+{
+    "item.watercan.watercan.wood": "Wooden Watercan",
+    "item.watercan.watercan.stone": "Stone Watercan",
+    "item.watercan.watercan.iron": "Iron Watercan",
+    "item.watercan.watercan.diamond": "Diamond Watercan",
+    "item.watercan.watercan.gold": "Gold Watercan",
+
+    "tooltip.watercan.capacity": "%s/%s mB"
+}

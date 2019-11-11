@@ -1,0 +1,9 @@
+{
+    "item.watercan.watercan.wood": "Sulama KabÄ± (Tahta)",
+    "item.watercan.watercan.stone": "Sulama KabÄ± (TaÅŸ)",
+    "item.watercan.watercan.iron": "Sulama KabÄ± (Demir)",
+    "item.watercan.watercan.diamond": "Sulama KabÄ± (Elmas)",
+    "item.watercan.watercan.gold": "Sulama KabÄ± (AltÄ±n)",
+
+    "tooltip.watercan.capacity": "%s/%s mB"
+}

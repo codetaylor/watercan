@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "watercan:watercan_diamond"
+  },
+  "pattern": [
+    "dm ",
+    "dbd",
+    " d "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "m": {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    "d": {
+      "type": "forge:ore_dict",
+      "ore": "gemDiamond"
+    },
+    "b": {
+      "item": "minecraft:bucket"
+    }
+  }
+}

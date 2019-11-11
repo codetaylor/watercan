@@ -1,0 +1,24 @@
+{
+  "result": {
+    "item": "watercan:watercan_stone"
+  },
+  "pattern": [
+    "sm ",
+    "sbs",
+    " s "
+  ],
+  "type": "forge:ore_shaped",
+  "key": {
+    "m": {
+      "item": "minecraft:dye",
+      "data": 15
+    },
+    "s": {
+      "type": "forge:ore_dict",
+      "ore": "stone"
+    },
+    "b": {
+      "item": "minecraft:bowl"
+    }
+  }
+}
