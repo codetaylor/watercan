@@ -1,0 +1,9 @@
+itemGroup.watercan=Gießkannen
+
+item.watercan.watercan.wood.name=hölzerne Gießkanne
+item.watercan.watercan.stone.name=steinerne Gießkanne
+item.watercan.watercan.iron.name=eiserne Gießkanne
+item.watercan.watercan.diamond.name=diamantene Gießkanne
+item.watercan.watercan.gold.name=goldene Gießkanne
+
+tooltip.watercan.capacity=%s/%s mB
