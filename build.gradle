@@ -12,7 +12,16 @@ apply plugin: 'net.minecraftforge.gradle'
 // Only edit below this line, the above code adds and enables the necessary things for Forge to be setup.
 apply plugin: 'maven-publish'
 
-version = '1.0'
+def getVersionName = { String workTree ->
+    def stdout = new ByteArrayOutputStream()
+    exec {
+        commandLine 'git', "--git-dir=\"${workTree}/.git\"", "--work-tree=\"${workTree}\"", 'describe', '--tags'
+        standardOutput = stdout
+    }
+    return stdout.toString().trim()
+}
+
+version = "1.14.4-" + getVersionName("${project.projectDir}")
 group = 'com.codetaylor.mc.watercan' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'watercan'
 
