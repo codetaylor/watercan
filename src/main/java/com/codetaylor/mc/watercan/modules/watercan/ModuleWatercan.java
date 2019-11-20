@@ -1,23 +1,17 @@
 package com.codetaylor.mc.watercan.modules.watercan;
 
 import com.codetaylor.mc.watercan.ModWatercan;
-import com.codetaylor.mc.watercan.modules.watercan.init.ModuleItems;
+import com.codetaylor.mc.watercan.modules.watercan.init.ItemInitializer;
 import com.codetaylor.mc.watercan.modules.watercan.item.*;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ObjectHolder;
 
-@Mod.EventBusSubscriber(modid = ModuleWatercan.MOD_ID)
 public class ModuleWatercan {
 
-  public static final String MOD_ID = ModWatercan.MOD_ID;
+  public static void onRegisterItemEvent(RegistryEvent.Register<Item> event) {
 
-  @SubscribeEvent
-  public void onRegisterItemEvent(RegistryEvent.Register<Item> event) {
-
-    ModuleItems.onRegister(event.getRegistry());
+    ItemInitializer.onRegister(event.getRegistry());
   }
 
   @ObjectHolder(ModWatercan.MOD_ID)

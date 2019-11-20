@@ -5,7 +5,7 @@ import net.minecraft.block.DispenserBlock;
 import net.minecraft.item.Item;
 import net.minecraftforge.registries.IForgeRegistry;
 
-public class ModuleItems {
+public class ItemInitializer {
 
   public static void onRegister(IForgeRegistry<Item> registry) {
 

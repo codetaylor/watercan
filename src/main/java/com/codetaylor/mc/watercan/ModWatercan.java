@@ -1,6 +1,6 @@
 package com.codetaylor.mc.watercan;
 
-import com.codetaylor.mc.watercan.modules.watercan.init.ModuleItems;
+import com.codetaylor.mc.watercan.modules.watercan.ModuleWatercan;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
@@ -11,7 +11,6 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.fml.loading.FMLPaths;
-import net.minecraftforge.registries.IForgeRegistry;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -52,8 +51,7 @@ public class ModWatercan {
     @SubscribeEvent
     public static void onRegisterItem(RegistryEvent.Register<Item> event) {
 
-      IForgeRegistry<Item> registry = event.getRegistry();
-      ModuleItems.onRegister(registry);
+      ModuleWatercan.onRegisterItemEvent(event);
     }
   }
 

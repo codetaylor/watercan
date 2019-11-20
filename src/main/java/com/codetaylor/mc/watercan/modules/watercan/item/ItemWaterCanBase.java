@@ -29,7 +29,6 @@ import net.minecraft.world.gen.feature.FlowersFeature;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.common.MinecraftForge;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -51,8 +50,6 @@ public abstract class ItemWaterCanBase
 
     super(properties.group(ItemGroup.MISC));
     this.setRegistryName(name);
-
-    MinecraftForge.EVENT_BUS.register(this);
 
     if (ModWatercanConfig.CLIENT.spawnWaterParticles.get()) {
       this.particleSpawner = WaterCanParticleSpawner.INSTANCE;
