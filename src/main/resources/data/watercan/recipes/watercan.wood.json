@@ -1,21 +1,19 @@
 {
   "result": {
-    "item": "watercan:watercan_wood"
+    "item": "watercan:watercan.wood"
   },
   "pattern": [
     "wm ",
     "wbw",
     " w "
   ],
-  "type": "forge:ore_shaped",
+  "type": "crafting_shaped",
   "key": {
     "m": {
-      "item": "minecraft:dye",
-      "data": 15
+      "item": "minecraft:bone_meal"
     },
     "w": {
-      "type": "forge:ore_dict",
-      "ore": "plankWood"
+      "tag": "minecraft:planks"
     },
     "b": {
       "item": "minecraft:bowl"

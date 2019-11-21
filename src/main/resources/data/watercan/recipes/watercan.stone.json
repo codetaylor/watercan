@@ -1,21 +1,19 @@
 {
   "result": {
-    "item": "watercan:watercan_stone"
+    "item": "watercan:watercan.stone"
   },
   "pattern": [
     "sm ",
     "sbs",
     " s "
   ],
-  "type": "forge:ore_shaped",
+  "type": "crafting_shaped",
   "key": {
     "m": {
-      "item": "minecraft:dye",
-      "data": 15
+      "item": "minecraft:bone_meal"
     },
     "s": {
-      "type": "forge:ore_dict",
-      "ore": "stone"
+      "tag": "forge:stone"
     },
     "b": {
       "item": "minecraft:bowl"

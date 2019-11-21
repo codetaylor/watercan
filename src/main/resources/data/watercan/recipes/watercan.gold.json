@@ -1,21 +1,19 @@
 {
   "result": {
-    "item": "watercan:watercan_gold"
+    "item": "watercan:watercan.gold"
   },
   "pattern": [
     "gm ",
     "gbg",
     " g "
   ],
-  "type": "forge:ore_shaped",
+  "type": "crafting_shaped",
   "key": {
     "m": {
-      "item": "minecraft:dye",
-      "data": 15
+      "item": "minecraft:bone_meal"
     },
     "g": {
-      "type": "forge:ore_dict",
-      "ore": "ingotGold"
+      "tag": "forge:ingots/gold"
     },
     "b": {
       "item": "minecraft:bucket"

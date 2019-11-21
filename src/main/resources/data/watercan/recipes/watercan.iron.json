@@ -1,21 +1,19 @@
 {
   "result": {
-    "item": "watercan:watercan_iron"
+    "item": "watercan:watercan.iron"
   },
   "pattern": [
     "im ",
     "ibi",
     " i "
   ],
-  "type": "forge:ore_shaped",
+  "type": "crafting_shaped",
   "key": {
     "m": {
-      "item": "minecraft:dye",
-      "data": 15
+      "item": "minecraft:bone_meal"
     },
     "i": {
-      "type": "forge:ore_dict",
-      "ore": "ingotIron"
+      "tag": "forge:ingots/iron"
     },
     "b": {
       "item": "minecraft:bucket"

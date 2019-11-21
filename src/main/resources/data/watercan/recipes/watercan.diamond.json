@@ -1,0 +1,22 @@
+{
+  "result": {
+    "item": "watercan:watercan.diamond"
+  },
+  "pattern": [
+    "dm ",
+    "dbd",
+    " d "
+  ],
+  "type": "crafting_shaped",
+  "key": {
+    "m": {
+      "item": "minecraft:bone_meal"
+    },
+    "d": {
+      "tag": "forge:gems/diamond"
+    },
+    "b": {
+      "item": "minecraft:bucket"
+    }
+  }
+}
