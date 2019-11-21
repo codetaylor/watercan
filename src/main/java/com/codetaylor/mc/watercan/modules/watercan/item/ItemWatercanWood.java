@@ -5,7 +5,7 @@ import com.codetaylor.mc.watercan.ModWatercanConfig;
 public class ItemWatercanWood
     extends ItemWaterCanBase {
 
-  public static final String NAME = "watercan.wood";
+  public static final String NAME = "watercan_wood";
 
   public ItemWatercanWood() {
 

@@ -5,7 +5,7 @@ import com.codetaylor.mc.watercan.ModWatercanConfig;
 public class ItemWatercanDiamond
     extends ItemWaterCanBase {
 
-  public static final String NAME = "watercan.diamond";
+  public static final String NAME = "watercan_diamond";
 
   public ItemWatercanDiamond() {
 

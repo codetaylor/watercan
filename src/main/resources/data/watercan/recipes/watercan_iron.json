@@ -1,22 +1,22 @@
 {
   "result": {
-    "item": "watercan:watercan.wood"
+    "item": "watercan:watercan_iron"
   },
   "pattern": [
-    "wm ",
-    "wbw",
-    " w "
+    "im ",
+    "ibi",
+    " i "
   ],
   "type": "crafting_shaped",
   "key": {
     "m": {
       "item": "minecraft:bone_meal"
     },
-    "w": {
-      "tag": "minecraft:planks"
+    "i": {
+      "tag": "forge:ingots/iron"
     },
     "b": {
-      "item": "minecraft:bowl"
+      "item": "minecraft:bucket"
     }
   }
 }

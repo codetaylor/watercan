@@ -5,7 +5,7 @@ import com.codetaylor.mc.watercan.ModWatercanConfig;
 public class ItemWatercanGold
     extends ItemWaterCanBase {
 
-  public static final String NAME = "watercan.gold";
+  public static final String NAME = "watercan_gold";
 
   public ItemWatercanGold() {
 

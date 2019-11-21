@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "watercan:items/watercan.wood"
+    "layer0": "watercan:items/watercan_iron"
   }
 }

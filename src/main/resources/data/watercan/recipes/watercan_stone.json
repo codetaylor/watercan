@@ -1,22 +1,22 @@
 {
   "result": {
-    "item": "watercan:watercan.gold"
+    "item": "watercan:watercan_stone"
   },
   "pattern": [
-    "gm ",
-    "gbg",
-    " g "
+    "sm ",
+    "sbs",
+    " s "
   ],
   "type": "crafting_shaped",
   "key": {
     "m": {
       "item": "minecraft:bone_meal"
     },
-    "g": {
-      "tag": "forge:ingots/gold"
+    "s": {
+      "tag": "forge:stone"
     },
     "b": {
-      "item": "minecraft:bucket"
+      "item": "minecraft:bowl"
     }
   }
 }

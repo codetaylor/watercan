@@ -1,19 +1,19 @@
 {
   "result": {
-    "item": "watercan:watercan.stone"
+    "item": "watercan:watercan_wood"
   },
   "pattern": [
-    "sm ",
-    "sbs",
-    " s "
+    "wm ",
+    "wbw",
+    " w "
   ],
   "type": "crafting_shaped",
   "key": {
     "m": {
       "item": "minecraft:bone_meal"
     },
-    "s": {
-      "tag": "forge:stone"
+    "w": {
+      "tag": "minecraft:planks"
     },
     "b": {
       "item": "minecraft:bowl"
